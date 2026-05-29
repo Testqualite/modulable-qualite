@@ -6,6 +6,7 @@
 <title>Modulable — Portail qualité</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -107,7 +108,7 @@ textarea.field-input{min-height:70px;resize:vertical}
   <div class="portail-title">Formulaires disponibles</div>
 
   <div class="form-card" onclick="openForm('beton_qualite')">
-    <div class="form-icon" style="background:#E8EDE5">🧱</div>
+    <div class="form-icon" style="background:#E8EDE5;padding:0;overflow:hidden"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABQAFADASIAAhEBAxEB/8QAHAAAAQUBAQEAAAAAAAAAAAAAAwECBAUHAAYI/8QAOBAAAgEDAgMEBwYGAwAAAAAAAQIDAAQRBSEGEjETQVFhByIyYnGBwRRScpGhsRYjM0JD0SXh8P/EABgBAQEBAQEAAAAAAAAAAAAAAAEAAgME/8QAHhEAAgMAAgMBAAAAAAAAAAAAAAECERITMQMhQVH/2gAMAwEAAhEDEQA/AMvm07UZrKFYrWftYwQ68u677Zp1ppGqmHs3tmUMcYI3HmTWvabwkJ9RupO1lNqVQRuX5XYj2s7eGKspOEMKewWNmx6pmmPX5CucnN9IFGP6Y/HoWp3Ns0bQ8hOCC7AYNJDwzqcZ27I4PQt/4VssPCpXlMlrZE957Zz9Kf8Aw1MoxFbaaPxl2+lYryDmBkcXC100MqSNApZeVG5ieU5yDSW/Cl5b8nayqZJeaFeRSRlx1z8q2NdE1BNohpUfvLCc/tQL7h7Wbv7ORqVrmKdZQoiKgYB6Y796YryJk1CjPLD0Y3b8pljnmxtkkRrV7aejO2tpVmmnMdwEPI3bBkU5AA5QMnbm3z4Vd3ui6+0bRS3V08Jzlrdxny2G/WvG3sOpaZIqJcXCxAkkMCuPkazbT9jUfh6NOA9Nit2WXUZJEZeV+VeUNvsNz41FXhddOaQWmlPIDkBzeesfkBVDHf6nJNySTyxooyOU9aOvFOo28jCW4ZiADuOo3/Si6VIfXZrcUSxIqIvqgYFGA8hRts9KXb7or1HEDmlouFP9gpeXbbaoSOQa4A52NGMTHvWm9g3UEVEKpanMqyLyyIrjwYZpBE47qUJIO41EV1xw3pF1kvZRox/ujyp/SqS69HenTZMUrjwEg5h9K9aecdR+lOBbyrLimNsaBvTgvlWRyeljU2A7HRkXf/JcE7fICoUvpJ4olJMUNlAD7rP+5reWZtG1ctd6oOCR+dYS/G3F02c6lHHn7kK1Gk4h4nnGJNeuseCEL+wpyys348o76Y0sSe06qPPavnl7nU5v62rXr/GdqC1r2m8s80h96Qn61YLR9DSapp8H9S8gT8Uqj61Cl4w4etwe11a1BHd2qn9jWDLYwDrGD8RRVtoV6Rr+VWC0bNL6R+F4gf8AkUc+CAn6VBm9KXDyD+X28p92Fv8AVZWIUHRRThGv3achoi5PjXb+Jq+l0fSLe155eJbHtgpJiRGbJxkAEdfDpVP9o09CQ8szYG3Ig6/OtaQUwXLTgKRtTs0b1LWRsfefGfyph1wKf5VlAPxetQ5xQ5YcLmirBI/sxufgpqC2u6iXwvZxL7kY2pjalqDbvdyY8AcY/KjkRZZcJYXJ/wALAee1EFhIN2aJR5uKo47iSQgvM5Oe9jUlZWBwuRtsc0cg4LT7LEvtXcI+GTVhp+gyakAbWRZARnPMq7fM5/SqFZsBtwC49Y46+dHgvhaBZF5SR0LLzY/3RyMcFPcSmKQKQhU7g1Fc59jbJ2xXC4numBd3kfBC5AFdHAykRnGVJxjYVztPo3TXY1FBIBOD3eBpwiIcNkddqMIl6MATnvFJIChwMkHaohdiSrde7I609MFMbEjqK45MJyuSq9emRTIg3NllYE9APrQQqqwY8rAZ2HlUiMOCU7vEnehmMz5Ayp6Fhtj4VLt4CkXI4JZDjJ7/APukh0fIx5djg7GirEjrykEbnI6iiw2pDMwOzAA4H5USNGDHnUgZ8djQR//Z" style="width:100%;height:100%;object-fit:cover;border-radius:10px"></div>
     <div class="form-text">
       <div class="form-title">Qualité du béton</div>
       <div class="form-sub">Vérification visuelle, dimensions, planéité, humidité</div>
@@ -117,7 +118,7 @@ textarea.field-input{min-height:70px;resize:vertical}
   </div>
 
   <div class="form-card" onclick="openForm('beton_affaissement')">
-    <div class="form-icon" style="background:#EDE8E0">📉</div>
+    <div class="form-icon" style="background:#EDE8E0;padding:0;overflow:hidden"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABQAFADASIAAhEBAxEB/8QAHAAAAgMBAAMAAAAAAAAAAAAABQYDBAcCAAEI/8QANxAAAgEDAwMDAgQEBQUBAAAAAQIDBAURABIhBjFBEyJRYXEHFIGRMlKhwTNCsfDxFSM0YnLR/8QAGQEAAwEBAQAAAAAAAAAAAAAAAQIDAAQF/8QAHhEAAwEAAwEBAQEAAAAAAAAAAAECEQMSITFRQYH/2gAMAwEAAhEDEQA/AKNxrVuFSZhAkWR4PP66p5wRnXrbz2P76lSOWUhUDPzwFGdc+lcOc492D99FKLqC4U6hN6zIOMSDP9e+oY7TXlCRSzYPyNFKLpoMFeefHyijkfrrajYHqKqlq6VJZU9Jm7AHOfrq5nI2g+7GcZ1BmCCDJlCJGvLMQAoHnJ7ay7qfqaCtvXq2aSaoMTKv5uNmjSM9ioYdxjwBzoJaBhLq6pkqOo5IoyuaeARqWOAGI3f3H7aRoLzLYYzHS3GesriCrSvUMIY8/wAqk+4/U8alu1wmqUeWf/yqyY7jnJb/AHxof/0hUO6fO4EDb9cc6XgW7X6Bs0/8Mr7WXS31dNWRxM1Owb14hy+7I9+ON3H7aew3BwOdZr0Vb57bZpq+KuSFopyjRSMEjlAA4JPnk4OnyjuEFwo46umJZHzyD2I4I1RoyZw1JSPOZWponYj+IrnUpeKBQB6UKkhRkhRk9h41QpbrTVVXLTxvKJkblZI2XP1GR2+uqV8vNpsYNTdardvKmKnwHIZQSGVe4Of82kwYYScnaGGScDnvpcvvWtsssgoqcNcLmx2pSUvuO7/2Izj7cnWf3e93+90NZdKRZrbZ8jEkjnfKTwFU+c/Tgc86UaO41lvp5IqOQRNI6uZ0GJRjsA45A+QO+nnj0DaRtNu6Fv8A1hKlb1jUPSW/cGjtVMduf/s/8n7asdbVEFqtVR0/Q2mmpqKnRGjZUAyzfy/3OcnS30R1n1bR0yJXTfnLeVLRvVHdJ9g2c48857ca56x6he9V53YCkx7I1fJRQD3P1bOoX3VN18Q7pdfPotz2qCelo3Z2jlVy2O+FHPB+c64XM9aBtPAZ8L8aI1Tg7owMekgjAx3P+Y/udRWumaWqmcDPtEY/VgP9AdX411lIixrs/R9rrijXOeYysd0W5h6eT3HH8Jz++nKntqWikENNCq06sTlG3rnzzpIe4z0DUVvFTTxiqBAnqVKxIfKl8cfGjs976s6biFVX2SluNAAGFTbXBwp8kDBIx5wRqd1Sfj/wrCTXqE+99WsJILf01VGatqiI90zDMI8BSeB9zojYfwruMjm63t6esrpc+ktW7tH6meCcDLDAJ8D6ah6Q6Eh64utVfqtJKKjWYbEgQD127nk9scZIHnW4OBb6FZauZ3SKMl3IG7aoyST9hnS3ydfJL3M9mYV+K1bJB+RskhhDRRerMkQ9gdhhQOx7AkZ/m+NZdAyrNGsuBGSN7HJ/TR7qe8Pf+oK25yn/ABpS6j4Xso/RQNLspByANXhOVhzV6zQk6xtJiUCOcAKfbs4XHjv8arV9yhnj/MrCUSJwNpHJP1/fSRA2x1BZcE55Hx86PmF5rfPEm9R7WUN+mf07aFSsMEILlRuo3ToDkE7uOe50ZtFRbKGSOSrqY/U2+oI1JZj8duP30gCGsmkWMU7uQdg2L3P99GqHpu8ruke3zxBBz6m1W/YnOgw4O0d2orrFJDOlMaclgVc8tg+Fx4+dMNqsN5pbdDV9OXMqkLkG21cm+F8DHBHKg57HyO+sooq5zDSRSbU3bsNBLt2secZyRk62b8OqyGTpZ0RJ/XikZ2hm9re4ZUA9gDj9/vqXPszqH4fXgU6l62g6WlSho4I5az0w5QnCQqWwOB+vHH9dZx1j+IF5udHVW53gjpqhgMRjnaMZBPccjt50nX7resvF4nrnghKSPkxlM7lHAGfHA0NqLg1xX1nRYw4yFU9gOO+nji6paJV6ynM4J5HOTg6qufPn51NI3u5OTqIAM4D5x5x31YUlpSeB2QksD+2cad+k5qeW8UUdTFFKvqokiSDdG3u4z86UKSnhFTgliynDL4I88jnt/wA6Zba4gEJXK7TnDZ4wcf8A5pa9QUOnUdwsz9Q1lorrULbLBKrwVlPHtkdUPddwCkEfcc/TTHbkp52dp6v82A5RJJab0m3cHaxP8RII8c84OhfUNRL1LZfyEdF+ZuaqDCzRq2G5LFScbcgd/H10o0dJduoKesnWaOdKCFJVp3l96jkFAB284z54zrm6bP4WVe/o32PpF6LqKejukdumo3jZzEID/wB5SSAcEY3A9/I4x3052a026w00lPbIvSieQyMrSM5LEAd2JOsheluzRR3KlvMIlhjE6LNIyydyNobsWOBjsfB7a1HpW4NcunqWoqJGlm27ZWkADZB8489tR55pLdK8Ln5h8vTbfTb3HORwO3bUtNJmERkkEdvtrlol2+7uPrqJwQQwOOcDXpv04SyeRk/014q7nwM+ewydRJLu9rDnXS5DZ8Y4x40owURJCoJZ3DHIJPJwMA/fH+mi0dYiREy8KiFuf4sYz/b/AH5X0nHuDEnI5PnPznRGKSJ7dLPWvinR1jjAHLtnOCPIAHOgY0Tp27GpoKepjkYNtH+J3PgZ+eR/fTLb3zXb6G5SU4nbM1OYVKN/MQOPqTjHz3yNINmq1kt8LRpiILjcE25GfA+BxxprSFqkQ08BDOwDtlwAWPfn41G0ikslu3Ttuuwjbp+B6mVnMq1KsSpOfcjN2U85BPfkaK9GdG19gWskq6mB2mGBHCp2r7s7snuT/TTTYLXBQ0W2nT0I5MHamNq/OMfP9NcS1EtDUijuFbC9bP6s0aRoUHog8DnPYdznnnXPdU56r4WjFW/0/9k=" style="width:100%;height:100%;object-fit:cover;border-radius:10px"></div>
     <div class="form-text">
       <div class="form-title">Affaissement du béton</div>
       <div class="form-sub">Test d'affaissement, consistance, mesures</div>
@@ -127,7 +128,7 @@ textarea.field-input{min-height:70px;resize:vertical}
   </div>
 
   <div class="form-card" onclick="openForm('urethane')">
-    <div class="form-icon" style="background:#E5EAE8">🔵</div>
+    <div class="form-icon" style="background:#E5EAE8;padding:0;overflow:hidden"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCABQAFADASIAAhEBAxEB/8QAGwAAAgIDAQAAAAAAAAAAAAAAAwQFBwECBgD/xAA4EAABAwIDBAUKBgMAAAAAAAABAgMEABEFEiEGEzGBQVFhcZEHFCIyM3KCkqGxFSRCUsHRI2Ky/8QAGQEAAgMBAAAAAAAAAAAAAAAAAAECBAUD/8QAHREBAQACAgMBAAAAAAAAAAAAAAECEQMSBCFRYf/aAAwDAQACEQMRAD8A59MZq3sGxbX1RRNw0ODaPlFMtpuqxFYU2U6EcDWduk0bZbAvkT8orJYQrNcCiNoURRd3qe6gy4jgcBRERRYKP1oob05VsOCUjjQA8iEXUE3rANxbLRgk5bWr1j1UwWWgZTpr0UJaLkq19EU2bXAJ7aEoXSbfqNMEsEn/AInhUeXcZ1JyuW6FjQ/3zqTWkEXF9aQl4QNkdv8AFsASkphSfzsEHhkPFI7tR8FSZtlFuuny49c7A0aToaOlF7d1aISEq500hItzrmAko0FYLZz9VNJTWqkgKueqigHdiw41opsUwRfhWihagFVIAvbo0oawALimSNfrSWIyW4MN6Q7ohpBWe3s8alPZV2PllwVxeCQtpoiLysHeCnLcVMKIChyNjzNcOH5TraXY+4UysBSPWJKTqL9tX3JiszoT8OSjPHkNqacQelKhYjwNUFhsN7CJWIbPSzeRhrxaSq3rtnVCuY+9W/Jx9digL72NN+yYQ4OtKNfqRTkcYq7FBccbacOuXJr96lEZeNuNjR8oCe7Sqly/E0KG8azWSSe30QP+qZETEyi7sjU9AA/upZsDXSt7C9LsSADGLZLF9kG+gy0J5jGALCUyB7tdCuxIoLgGUnp6KJQ54wcSKdcQKVf6pFBi4O9tBtBhOyxdccS855xNcJuUsI1PjwHbap10pQ0okgADj966fySYMTFn7USEkPYmvdxrjVMdBsPmUCeQqxwY9st/CqxEKBFVd5TsK8wx3C9pmU2betAmkdurSjzuPCrFDp4a0lj2FI2h2fm4U9omS0UoV+xfFKuSgDV3LHtLEZVWCWylVluJSQeF6ImdGJF3U9HTUHhjfnkb82yEym1KZfTaxS6g5VX5j61ItwY44NisqzV1Uz/n0Yal5HjXjiUYcHUml0QYw1LSPCjJhxhruUeFIMHEI4JKnByF6C5ica4AX9DR9w0E23aAO6guhKRoBRAQkNv487DwiCVBzEHhHzgezRxcVySDV8w4jECExDit7uOw2lppA6EpFh9KrjyZYMXZ8/aJ/VsXhw+qw1dX3k2T8JqzQcw0OlaPBh1wQqKObN6OtMoKQnVXKldyUNk57nqFZAtYlWvC1dyVftnBGD7XOy2Uf4cVTvgm9hv0WC/FOVXjUMmZJCvRh3Ha8B/FWVtvhH4tsy5uE5pcNQlx9P1IvdPxJzDmKqcYkybKQ6hSVC4IWOFUfIw1lv6nKkxJnKvkjsJHRmeJ+wrZLuI2uUxgeoLV/VJImoIOup6taMH3VAZGnFdyCf4qvq/D2KpyeUXIYSe8mlX1T3QiO0W1y5K0sR0pB9oo2BPYNSe6j2mr0TDlH3WFn+K6DYHCHJe0sifLaWgYYgIbQ4kpO+dHrWOuiOHv104+O5ZSWFasXCYUfBcHh4ZF1ZitBpJ/dbio9pNzzpvekcK8MqT6QvWM6B0VooP/2Q==" style="width:100%;height:100%;object-fit:cover;border-radius:10px"></div>
     <div class="form-text">
       <div class="form-title">Uréthane giclée</div>
       <div class="form-sub">Inspection visuelle, épaisseur, documentation</div>
@@ -137,8 +138,8 @@ textarea.field-input{min-height:70px;resize:vertical}
   </div>
 
   <div style="margin-bottom:6px;display:flex;align-items:center;justify-content:space-between">
-    <div class="portail-title" style="margin-bottom:0">Fiches DFMA en cours</div>
-    <button onclick="addDFMA()" style="background:var(--gm);color:#fff;border:none;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:4px">+ Ajouter</button>
+    <div class="portail-title" style="margin-bottom:0">Fiches de v&#233;rification</div>
+    <button onclick="addDFMA()" style="background:var(--gm);color:#fff;border:none;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:4px">+ Ajouter fiche</button>
   </div>
   <div id="dfma-list"></div>
 
@@ -147,7 +148,7 @@ textarea.field-input{min-height:70px;resize:vertical}
   <div style="margin-top:16px;padding:12px;background:var(--card);border-radius:var(--r);border:1px solid var(--border)">
     <div style="font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px">Configuration courriel</div>
     <div style="font-size:11px;color:var(--text2);margin-bottom:8px">Adresse pour recevoir les rapports :</div>
-    <input class="field-input" id="emailDest" placeholder="qualite@modulable.com" style="margin-bottom:8px">
+    <input class="field-input" id="emailDest" placeholder="joanievaliquette@modulable.com" style="margin-bottom:8px">
     <button onclick="saveEmail()" style="width:100%;padding:9px;border-radius:var(--rs);border:none;background:var(--gm);color:#fff;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">Enregistrer</button>
     <div style="font-size:10px;color:var(--muted);margin-top:6px;text-align:center" id="emailSaved"></div>
   </div>
@@ -363,7 +364,7 @@ textarea.field-input{min-height:70px;resize:vertical}
 
 <div class="modal-bg" id="addModal" onclick="if(event.target===this)closeAddModal()">
   <div class="modal">
-    <div class="mtitle">Ajouter une fiche DFMA</div>
+    <div class="mtitle">Ajouter une fiche de vérification</div>
     <div class="msub">Entrez le numéro ou le nom du corridor</div>
     <input class="modal-input" id="newCorridorInput" placeholder="ex: C-2024-001" />
     <div class="macts">
@@ -371,6 +372,15 @@ textarea.field-input{min-height:70px;resize:vertical}
       <button class="mbtn mbtn-pr" onclick="confirmAddDFMA()">Ajouter</button>
     </div>
   </div>
+</div>
+
+<div id="pdf-overlay" style="display:none;position:fixed;inset:0;z-index:500;background:#1a1a1a;flex-direction:column">
+  <div style="background:#242127;padding:10px 16px;display:flex;align-items:center;gap:10px;flex-shrink:0">
+    <button onclick="closePDFOverlay()" style="background:none;border:none;color:#6D8062;font-size:13px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">&#8592; Retour</button>
+    <span style="color:#E3E4DB;font-size:13px;font-weight:600;flex:1">Rapport PDF</span>
+    <button onclick="printPDF()" style="background:#05480D;color:#fff;border:none;border-radius:8px;padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif">&#128438; Enregistrer</button>
+  </div>
+  <iframe id="pdf-frame" style="flex:1;border:none;width:100%;height:100%;background:#fff"></iframe>
 </div>
 
 <div class="toast" id="toast"></div>
@@ -500,38 +510,122 @@ function resetForm(id){
 
 function sendForm(id){
   saveForm(id, true);
-  const dest = getEmailDest();
-  if(!dest){ showToast("⚠ Configurez d'abord l'adresse courriel"); return; }
   if(!FORM_FIELDS[id]) return;
-
   const data = {};
   FORM_FIELDS[id].forEach(f => { data[f] = getVal(f); });
+  generatePDF(id, data);
+}
 
-  // Build readable email body
-  let body = "RAPPORT — " + id.replace(/_/g," ").toUpperCase() + "\n";
-  body += "Généré le : " + new Date().toLocaleString("fr-CA") + "\n\n";
-  FORM_FIELDS[id].forEach(f => {
-    const label = FORM_LABELS[f] || f;
-    const val = data[f] || "—";
-    body += label + " : " + val + "\n";
-  });
+function generatePDF(id, data){
+  const titles = {
+    beton_qualite: "Rapport de tests de v\u00e9rification de la qualit\u00e9 du b\u00e9ton",
+    beton_affaissement: "Rapport de test d'affaissement du b\u00e9ton",
+    urethane: "Rapport de tests pour l'ur\u00e9thane gicel\u00e9e"
+  };
+  const title = titles[id] || id;
 
-  const params = {
-    to_email: dest,
-    subject: "Rapport " + id.replace(/_/g," ") + " — " + (data[Object.keys(data)[1]] || "") + " — " + new Date().toLocaleDateString("fr-CA"),
-    message: body,
-    from_name: "Modulable Qualité"
+  const sections = {
+    beton_qualite: [
+      { title: "Informations g\u00e9n\u00e9rales", fields: ["bq_date","bq_projet","bq_fournisseur","bq_module","bq_hdebut","bq_hfin"] },
+      { title: "Inspection visuelle", fields: ["bq_fissure","bq_trou","bq_irreg","bq_couleur","bq_laitance"] },
+      { title: "Contr\u00f4le des dimensions", fields: ["bq_dimension","bq_epaisseur","bq_conforme"] },
+      { title: "Test de plan\u00e9it\u00e9", fields: ["bq_planeite"] },
+      { title: "Test d'humidit\u00e9", fields: ["bq_humidite"] },
+      { title: "Revue de la documentation", fields: ["bq_carte","bq_bdc"] },
+      { title: "Infractions et mesures correctives", fields: ["bq_infractions","bq_responsable"] }
+    ],
+    beton_affaissement: [
+      { title: "Informations g\u00e9n\u00e9rales", fields: ["ba_date","ba_projet","ba_fournisseur","ba_module","ba_hdebut","ba_hfin"] },
+      { title: "R\u00e9sultats", fields: ["ba_affaissement","ba_consistance"] },
+      { title: "Infractions et mesures correctives", fields: ["ba_infractions","ba_testeur","ba_responsable"] }
+    ],
+    urethane: [
+      { title: "Informations g\u00e9n\u00e9rales", fields: ["ur_date","ur_fournisseur","ur_projet","ur_module","ur_hdebut","ur_hfin"] },
+      { title: "Inspection visuelle", fields: ["ur_uniform","ur_zone","ur_bulles","ur_vide","ur_irreg"] },
+      { title: "Mesure de l'\u00e9paisseur", fields: ["ur_plafond","ur_plancher","ur_contour"] },
+      { title: "Revue documentaire", fields: ["ur_carte","ur_bdc"] },
+      { title: "Infractions et mesures correctives", fields: ["ur_infractions","ur_testeur","ur_responsable"] }
+    ]
   };
 
-  showToast("⏳ Envoi en cours...");
-  emailjs.send(EMAILJS_SERVICE, EMAILJS_TEMPLATE, params)
-    .then(() => { showToast("✉ Rapport envoyé !"); })
-    .catch(() => {
-      // Fallback: open mailto
-      const mailto = "mailto:"+dest+"?subject="+encodeURIComponent(params.subject)+"&body="+encodeURIComponent(body);
-      window.location.href = mailto;
-      showToast("✉ Ouverture courriel...");
+  const OUI_NON_FIELDS = new Set(["bq_fissure","bq_trou","bq_irreg","bq_couleur","bq_laitance","bq_conforme","bq_planeite","bq_bdc","ur_uniform","ur_zone","ur_bulles","ur_vide","ur_irreg","ur_plafond","ur_plancher","ur_contour","ur_bdc"]);
+
+  let sectionsHTML = "";
+  (sections[id] || []).forEach(sec => {
+    let rows = "";
+    sec.fields.forEach(f => {
+      const label = FORM_LABELS[f] || f;
+      const val = data[f] || "—";
+      const isON = OUI_NON_FIELDS.has(f);
+      if(isON){
+        const oui = val === "OUI";
+        const non = val === "NON";
+        rows += '<tr><td style="padding:7px 10px;border-bottom:1px solid #E3E4DB;font-size:12px;color:#242127;width:55%">' + label + '</td>' +
+          '<td style="padding:7px 10px;border-bottom:1px solid #E3E4DB;text-align:center;width:22.5%">' +
+            '<span style="display:inline-block;width:18px;height:18px;border-radius:50%;border:2px solid ' + (oui ? '#05480D' : '#D0D1C8') + ';background:' + (oui ? '#05480D' : 'transparent') + ';vertical-align:middle"></span>' +
+            '<span style="font-size:11px;color:' + (oui ? '#05480D' : '#9B9890') + ';margin-left:4px">OUI</span>' +
+          '</td>' +
+          '<td style="padding:7px 10px;border-bottom:1px solid #E3E4DB;text-align:center;width:22.5%">' +
+            '<span style="display:inline-block;width:18px;height:18px;border-radius:50%;border:2px solid ' + (non ? '#C0392B' : '#D0D1C8') + ';background:' + (non ? '#C0392B' : 'transparent') + ';vertical-align:middle"></span>' +
+            '<span style="font-size:11px;color:' + (non ? '#C0392B' : '#9B9890') + ';margin-left:4px">NON</span>' +
+          '</td></tr>';
+      } else {
+        rows += '<tr><td style="padding:7px 10px;border-bottom:1px solid #E3E4DB;font-size:12px;color:#9B9890;width:40%">' + label + '</td>' +
+          '<td colspan="2" style="padding:7px 10px;border-bottom:1px solid #E3E4DB;font-size:12px;color:#242127;font-weight:500">' + (val || '—') + '</td></tr>';
+      }
     });
+    sectionsHTML += '<div style="margin-bottom:16px;border-radius:8px;overflow:hidden;border:1px solid #D0D1C8">' +
+      '<div style="background:#242127;padding:8px 12px;font-size:11px;font-weight:600;color:#E3E4DB;text-transform:uppercase;letter-spacing:.5px">' + sec.title + '</div>' +
+      '<table style="width:100%;border-collapse:collapse;background:#fff">' + rows + '</table>' +
+      '</div>';
+  });
+
+  const now = new Date();
+  const dateStr = now.toLocaleDateString("fr-CA");
+  const timeStr = now.toLocaleTimeString("fr-CA", {hour:"2-digit",minute:"2-digit"});
+
+  const html = '<!DOCTYPE html><html><head><meta charset="UTF-8">' +
+    '<style>@media print{body{margin:0}button{display:none!important}}' +
+    'body{font-family:Arial,sans-serif;margin:0;padding:0;background:#f5f5f5}' +
+    '.page{max-width:720px;margin:0 auto;background:#fff;padding:0}' +
+    '</style></head><body><div class="page">' +
+    // Header
+    '<div style="background:#242127;padding:24px 28px;display:flex;align-items:center;justify-content:space-between">' +
+      '<div style="font-size:22px;font-weight:700;letter-spacing:3px;color:#E3E4DB">MODUL<span style="color:#6D8062">ABLE</span></div>' +
+      '<div style="text-align:right"><div style="font-size:10px;color:rgba(227,228,219,0.5);text-transform:uppercase;letter-spacing:1px">Contr\u00f4le qualit\u00e9</div>' +
+      '<div style="font-size:10px;color:rgba(227,228,219,0.4);margin-top:2px">' + dateStr + ' \u00e0 ' + timeStr + '</div></div>' +
+    '</div>' +
+    // Title band
+    '<div style="background:#6D8062;padding:12px 28px">' +
+      '<div style="font-size:14px;font-weight:600;color:#fff">' + title + '</div>' +
+    '</div>' +
+    // Content
+    '<div style="padding:20px 28px">' + sectionsHTML +
+    // Signature block
+    '<div style="margin-top:24px;padding:16px;border:1px solid #D0D1C8;border-radius:8px;background:#F8F8F6">' +
+      '<div style="font-size:11px;color:#9B9890;margin-bottom:12px;font-style:italic">Je d\u00e9clare que tous les tests ont \u00e9t\u00e9 effectu\u00e9s selon la proc\u00e9dure d\u00e9finie par Modulable.</div>' +
+      '<div style="display:flex;gap:24px">' +
+        '<div style="flex:1"><div style="font-size:10px;color:#9B9890;text-transform:uppercase;letter-spacing:.5px;margin-bottom:20px">Signature</div>' +
+        '<div style="border-top:1px solid #242127;padding-top:4px;font-size:10px;color:#9B9890">Responsable CQ</div></div>' +
+        '<div style="flex:1"><div style="font-size:10px;color:#9B9890;text-transform:uppercase;letter-spacing:.5px;margin-bottom:20px">Date</div>' +
+        '<div style="border-top:1px solid #242127;padding-top:4px;font-size:10px;color:#9B9890">' + dateStr + '</div></div>' +
+      '</div>' +
+    '</div>' +
+    // Footer
+    '<div style="margin-top:16px;text-align:center;font-size:9px;color:#9B9890;padding-bottom:20px">modulable.com \u00b7 G\u00e9n\u00e9r\u00e9 le ' + dateStr + '</div>' +
+    '</div>' +
+    // Print button
+    '<div style="position:fixed;bottom:20px;right:20px;display:flex;gap:10px">' +
+      '<button onclick="window.print()" style="background:#05480D;color:#fff;border:none;border-radius:8px;padding:12px 20px;font-size:13px;font-weight:600;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.2)">&#128438; Imprimer / Enregistrer PDF</button>' +
+      '<button onclick="window.close()" style="background:#242127;color:#E3E4DB;border:none;border-radius:8px;padding:12px 16px;font-size:13px;cursor:pointer">&#10005;</button>' +
+    '</div>' +
+    '</div></body></html>';
+
+  const overlay = document.getElementById("pdf-overlay");
+  const frame = document.getElementById("pdf-frame");
+  overlay.style.display = "flex";
+  frame.srcdoc = html;
+  showToast("✓ Rapport généré");
 }
 
 function getEmailDest(){
@@ -596,7 +690,7 @@ function renderDFMAList(){
   var container = document.getElementById("dfma-list");
   if(!container) return;
   if(list.length === 0){
-    container.innerHTML = '<div class="dfma-empty">Aucune fiche en cours.<br>Appuyez sur <strong>+ Ajouter</strong> pour créer une fiche.</div>';
+    container.innerHTML = '<div class="dfma-empty">Aucune fiche en cours.<br>Appuyez sur <strong>+ Ajouter fiche</strong> pour créer une fiche.</div>';
     return;
   }
   container.innerHTML = "";
@@ -616,7 +710,8 @@ function renderDFMAList(){
     div.className = "dfma-item";
     var icon = document.createElement("div");
     icon.className = "dfma-item-icon";
-    icon.textContent = "✅";
+    icon.innerHTML = '<svg viewBox="0 0 44 44" width="28" height="28" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="22" cy="22" r="20" stroke="#05480D" stroke-width="2.5"/><polyline points="13,22 19,29 31,15" stroke="#05480D" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+icon.style.background = "#d8dbd2";
     var text = document.createElement("div");
     text.className = "dfma-item-text";
     var title = document.createElement("div");
@@ -1411,6 +1506,13 @@ function closeDFMA(){
   ov.style.visibility = "hidden";
   ov.style.pointerEvents = "none";
   ov.style.display = "none";
+}
+
+function closePDFOverlay(){
+  document.getElementById("pdf-overlay").style.display = "none";
+}
+function printPDF(){
+  document.getElementById("pdf-frame").contentWindow.print();
 }
 
 // Init
