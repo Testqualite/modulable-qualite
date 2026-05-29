@@ -75,6 +75,17 @@ textarea.field-input{min-height:70px;resize:vertical}
 .btn-reset{background:var(--bg);color:var(--red);border:1px solid var(--border)}
 
 /* TOAST */
+.dfma-item{background:var(--card);border-radius:var(--r);border:1.5px solid var(--border);padding:14px 16px;margin-bottom:8px;display:flex;align-items:center;gap:12px}
+.dfma-item-icon{width:42px;height:42px;border-radius:10px;background:#E5EAE8;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.dfma-item-text{flex:1;min-width:0}
+.dfma-item-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
+.dfma-item-sub{font-size:11px;color:var(--muted)}
+.dfma-item-actions{display:flex;gap:6px;flex-shrink:0}
+.dfma-btn-open{background:var(--gm);color:#fff;border:none;border-radius:var(--rs);padding:7px 12px;font-size:11px;font-weight:600;cursor:pointer;font-family:"DM Sans",sans-serif}
+.dfma-btn-del{background:var(--bg);color:var(--red);border:1px solid var(--border);border-radius:var(--rs);padding:7px 10px;font-size:11px;font-weight:600;cursor:pointer;font-family:"DM Sans",sans-serif}
+.dfma-empty{text-align:center;padding:20px;color:var(--muted);font-size:12px;background:var(--card);border-radius:var(--r);border:1px dashed var(--border);margin-bottom:8px}
+.modal-input{width:100%;border:1px solid var(--border);border-radius:var(--rs);padding:10px 12px;font-size:14px;font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);outline:none;margin-top:6px}
+.modal-input:focus{border-color:var(--gm);background:var(--card)}
 .toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--text);color:#E3E4DB;padding:10px 20px;border-radius:20px;font-size:12px;font-weight:500;opacity:0;transition:all .3s;z-index:200;white-space:nowrap}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
@@ -125,15 +136,11 @@ textarea.field-input{min-height:70px;resize:vertical}
     <div class="form-arrow">›</div>
   </div>
 
-  <div class="form-card" onclick="openDFMA()">
-    <div class="form-icon" style="background:#E5EAE8">✅</div>
-    <div class="form-text">
-      <div class="form-title">Fiche de vérification DFMA</div>
-      <div class="form-sub">Vérification complète des corridors incombustibles</div>
-      <div class="form-status" id="status_verification_dfma"><span style="color:var(--muted)">● Appuyer pour ouvrir</span></div>
-    </div>
-    <div class="form-arrow">›</div>
+  <div style="margin-bottom:6px;display:flex;align-items:center;justify-content:space-between">
+    <div class="portail-title" style="margin-bottom:0">Fiches DFMA en cours</div>
+    <button onclick="addDFMA()" style="background:var(--gm);color:#fff;border:none;border-radius:20px;padding:5px 14px;font-size:12px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;display:flex;align-items:center;gap:4px">+ Ajouter</button>
   </div>
+  <div id="dfma-list"></div>
 
 
 
@@ -354,6 +361,18 @@ textarea.field-input{min-height:70px;resize:vertical}
 
 
 
+<div class="modal-bg" id="addModal" onclick="if(event.target===this)closeAddModal()">
+  <div class="modal">
+    <div class="mtitle">Ajouter une fiche DFMA</div>
+    <div class="msub">Entrez le numéro ou le nom du corridor</div>
+    <input class="modal-input" id="newCorridorInput" placeholder="ex: C-2024-001" />
+    <div class="macts">
+      <button class="mbtn mbtn-cl" onclick="closeAddModal()">Annuler</button>
+      <button class="mbtn mbtn-pr" onclick="confirmAddDFMA()">Ajouter</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script>
@@ -444,6 +463,7 @@ function closeForm(id){
   saveForm(id, true);
   document.getElementById("fv_"+id).classList.remove("show");
   updateAllStatuses();
+renderDFMAList();
 }
 
 function saveForm(id, silent){
@@ -561,6 +581,172 @@ function showToast(msg){
   setTimeout(()=>t.classList.remove("show"), 2500);
 }
 
+
+
+// DFMA dynamic list management
+function getDFMAList(){
+  try { return JSON.parse(localStorage.getItem("dfma_list") || "[]"); } catch(e){ return []; }
+}
+function saveDFMAList(list){
+  try { localStorage.setItem("dfma_list", JSON.stringify(list)); } catch(e){}
+}
+
+function renderDFMAList(){
+  var list = getDFMAList();
+  var container = document.getElementById("dfma-list");
+  if(!container) return;
+  if(list.length === 0){
+    container.innerHTML = '<div class="dfma-empty">Aucune fiche en cours.<br>Appuyez sur <strong>+ Ajouter</strong> pour créer une fiche.</div>';
+    return;
+  }
+  container.innerHTML = "";
+  list.forEach(function(item){
+    var key = "verif_dfma_" + item.id;
+    var statusText = "Non démarré";
+    var statusColor = "var(--muted)";
+    try {
+      var saved = localStorage.getItem(key);
+      if(saved){
+        var d = JSON.parse(saved);
+        var tot = Object.keys(d.answers||{}).length;
+        if(tot > 0){ statusText = "En cours — " + tot + " pts"; statusColor = "#D4831A"; }
+      }
+    } catch(e){}
+    var div = document.createElement("div");
+    div.className = "dfma-item";
+    var icon = document.createElement("div");
+    icon.className = "dfma-item-icon";
+    icon.textContent = "✅";
+    var text = document.createElement("div");
+    text.className = "dfma-item-text";
+    var title = document.createElement("div");
+    title.className = "dfma-item-title";
+    title.textContent = "Corridor " + item.name;
+    var sub = document.createElement("div");
+    sub.className = "dfma-item-sub";
+    sub.style.color = statusColor;
+    sub.textContent = statusText;
+    text.appendChild(title);
+    text.appendChild(sub);
+    var actions = document.createElement("div");
+    actions.className = "dfma-item-actions";
+    var btnOpen = document.createElement("button");
+    btnOpen.className = "dfma-btn-open";
+    btnOpen.textContent = "Ouvrir";
+    (function(id, name){ btnOpen.onclick = function(){ openDFMA(id, name); }; })(item.id, item.name);
+    var btnDel = document.createElement("button");
+    btnDel.className = "dfma-btn-del";
+    btnDel.textContent = "✕";
+    (function(id){ btnDel.onclick = function(){ deleteDFMA(id); }; })(item.id);
+    actions.appendChild(btnOpen);
+    actions.appendChild(btnDel);
+    div.appendChild(icon);
+    div.appendChild(text);
+    div.appendChild(actions);
+    container.appendChild(div);
+  });
+}
+
+function addDFMA(){
+  document.getElementById("newCorridorInput").value = "";
+  document.getElementById("addModal").classList.add("show");
+  setTimeout(()=>document.getElementById("newCorridorInput").focus(), 300);
+}
+
+function closeAddModal(){
+  document.getElementById("addModal").classList.remove("show");
+}
+
+function confirmAddDFMA(){
+  const name = document.getElementById("newCorridorInput").value.trim();
+  if(!name){ showToast("⚠ Entrez un numéro de corridor"); return; }
+  const list = getDFMAList();
+  const id = "c_" + Date.now();
+  list.push({id, name});
+  saveDFMAList(list);
+  closeAddModal();
+  renderDFMAList();
+  showToast("✓ Corridor " + name + " ajouté");
+}
+
+function deleteDFMA(id){
+  if(!confirm("Retirer cette fiche de la liste ?")) return;
+  const list = getDFMAList().filter(i => i.id !== id);
+  saveDFMAList(list);
+  // keep localStorage data in case needed
+  renderDFMAList();
+  showToast("Fiche retirée");
+}
+
+// Override openDFMA to accept corridor id and name
+function openDFMA(corridorId, corridorName){
+  const overlay = document.getElementById("dfma-overlay");
+  overlay.style.visibility = "visible";
+  overlay.style.pointerEvents = "auto";
+  overlay.style.display = "flex";
+  const frame = document.getElementById("dfma-frame");
+  // Always reload with corridor param so data is isolated
+  const blob = new Blob([DFMA_HTML], {type:"text/html"});
+  const url = URL.createObjectURL(blob);
+  frame.src = url;
+  // Pass corridor info to iframe after load
+  frame.onload = function(){
+    try {
+      // Set corridor ID in iframe
+      const iDoc = frame.contentDocument || frame.contentWindow.document;
+      const inp = iDoc.getElementById("corridorId");
+      if(inp){ inp.value = corridorName || corridorId; inp.dispatchEvent(new Event("input")); }
+      // Override localStorage key in iframe to use corridor-specific key
+      const iWin = frame.contentWindow;
+      const saveKey = "verif_dfma_" + corridorId;
+      // Load existing data for this corridor
+      const saved = localStorage.getItem(saveKey);
+      if(saved && iWin.ST){
+        const d = JSON.parse(saved);
+        if(d.answers) iWin.ST.answers = d.answers;
+        if(d.ncData) iWin.ST.ncData = d.ncData;
+        iWin.renderPhase(0);
+        iWin.updateProgress();
+      }
+      // Hook save to write to parent localStorage with corridor key
+      const origAutoSave = iWin.autoSave;
+      iWin.autoSave = function(){
+        const data = {
+          corridor: corridorName,
+          answers: iWin.ST.answers,
+          ncData: iWin.ST.ncData,
+          savedAt: new Date().toISOString()
+        };
+        localStorage.setItem(saveKey, JSON.stringify(data));
+        renderDFMAList();
+      };
+    } catch(e){ console.log("iframe bridge error:", e); }
+  };
+  // Store current corridor for submit
+  overlay.dataset.corridorId = corridorId;
+  overlay.dataset.corridorName = corridorName || corridorId;
+}
+
+function closeDFMA(){
+  const ov = document.getElementById("dfma-overlay");
+  ov.style.visibility = "hidden";
+  ov.style.pointerEvents = "none";
+  ov.style.display = "none";
+  renderDFMAList();
+}
+
+// Listen for submit from iframe - remove from list when sent
+window.addEventListener("message", function(e){
+  if(e.data && e.data.type === "dfma_submitted"){
+    const ov = document.getElementById("dfma-overlay");
+    const cid = ov.dataset.corridorId;
+    const list = getDFMAList().filter(i => i.id !== cid);
+    saveDFMAList(list);
+    closeDFMA();
+    renderDFMAList();
+    showToast("✓ Fiche soumise et retirée de la liste");
+  }
+});
 
 // DFMA embedded via blob URL
 const DFMA_HTML = `<!DOCTYPE html>
@@ -1220,18 +1406,6 @@ init();
 </html>
 `;
 
-function openDFMA(){
-  const overlay = document.getElementById("dfma-overlay");
-  overlay.style.visibility = "visible";
-  overlay.style.pointerEvents = "auto";
-  overlay.style.display = "flex";
-  const frame = document.getElementById("dfma-frame");
-  if(frame.src === "about:blank" || frame.src === ""){
-    const blob = new Blob([DFMA_HTML], {type:"text/html"});
-    frame.src = URL.createObjectURL(blob);
-  }
-}
-
 function closeDFMA(){
   const ov = document.getElementById("dfma-overlay");
   ov.style.visibility = "hidden";
@@ -1245,6 +1419,7 @@ try {
   if(saved) document.getElementById("emailDest").value = saved;
 } catch(e){}
 updateAllStatuses();
+renderDFMAList();
 </script>
 </body>
 </html>
